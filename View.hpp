@@ -13,14 +13,15 @@ class View {
     double dTheta;
     double dy;
 public:
-    View(): theta(0), y(3), dTheta(0.04), dy(0.2) {}
-    double get_x() {return 10 * cos(theta);}
-    double get_y() {return y;}
-    double get_z() {return 10 * sin(theta);}
-    void move_right() {theta += dTheta;}
-    void move_left() {theta -= dTheta;}
-    void move_up() {y += dy;}
-    void move_down() {if (y > dy) y -= dy;}
+    View();
+    void init();
+    double get_x();
+    double get_y();
+    double get_z();
+    void move_right();
+    void move_left();
+    void move_up();
+    void move_down();
 };
 
 

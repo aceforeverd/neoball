@@ -1,7 +1,6 @@
 #include <GL/glut.h>
 #include <cmath>
 #include <vector>
-#include "Util.cc"
 #include "View.hpp"
 #include "Ball.hpp"
 #include "Ground.hpp"
@@ -15,12 +14,7 @@ const int BALL_NUM = 4;
 
 Ground ground(10, 10);
 View view;
-Ball balls[BALL_NUM] = {
-        Ball(0.7, GREEN, 6.0, 1.0, 250.0),
-        Ball(1.0, MAGENTA, 3.0, 4.0, 200.0),
-        Ball(0.4, WHITE, 1.0, 7.0, 300.0),
-        Ball(0.6, MAGENTA, 7.0, 3.0, 220.0)
-};
+Ball balls[BALL_NUM] ;
 
 void init() {
     glEnable(GL_DEPTH_TEST);
@@ -60,7 +54,7 @@ void timer(int v) {
     glutTimerFunc(1000/60, timer, v);
 }
 
-void special(int key, int, int) {
+void key_maps(int key, int, int) {
     switch (key) {
         case GLUT_KEY_LEFT:
             view.move_left(); break;
@@ -87,10 +81,16 @@ int main(int argc, char** argv) {
     glutInitWindowPosition(80, 80);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     glutCreateWindow("Balls");
+
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-    glutSpecialFunc(special);
+    glutSpecialFunc(key_maps);
     glutTimerFunc(100, timer, 0);
+
     init();
+    balls[0] = Ball(0.7, GREEN, 6.0, 1.0, 250.0);
+    balls[1] = Ball(1.0, MAGENTA, 3.0, 4.0, 200.0);
+    balls[2] = Ball(0.4, WHITE, 1.0, 7.0, 300.0);
+    balls[3] = Ball(0.6, "./obj.obj", 4.0, 3.0, 220.0);
     glutMainLoop();
 }

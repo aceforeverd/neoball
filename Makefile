@@ -5,6 +5,9 @@ CXXFLAGS = -std=c++14 -Wall
 LDLIBS = -lGL -lGLU -lglut
 OUT  = ball
 
+all : main
+	rm -r *.o *.gch
+
 main: main.cpp View.o Ground.o Ball.o
 	$(CXX) $(CXXFLAGS) -o $(OUT) main.cpp View.o Ball.o Ground.o $(LDLIBS)
 
@@ -16,7 +19,6 @@ Ball.o: Ball.cpp Ball.hpp
 
 Ground.o: Ground.cpp Ground.hpp
 	$(CXX) $(CXXFLAGS) -c Ground.cpp Ground.hpp $(LDLIBS)
-
 
 run: main
 	./$(OUT)

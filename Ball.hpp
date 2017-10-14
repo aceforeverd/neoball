@@ -21,12 +21,18 @@ class Ball {
     double startup_speed;
     double timeout;
 
+    GLuint obj;
+
 public:
+    Ball();
     Ball(double r, GLfloat* c, double xx, double zz, double speed);
+    Ball(double r, const char *filename, double xx, double zz, double speed);
 
     void update();
 
     void reset();
+
+    void read_obj(const char *filename);
 };
 
 #endif //BALL_BALL_HPP
