@@ -5,7 +5,6 @@
 *.slo
 *.lo
 *.o
-*.obj
 
 # Precompiled Headers
 *.gch
@@ -31,5 +30,6 @@
 *.out
 *.app
 .idea/
-cmake-build-debug
+cmake-build-debug/
 *.zip
+ball

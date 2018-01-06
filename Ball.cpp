@@ -35,21 +35,26 @@ Ball::Ball(double r, const char *filename, double xx, double zz, double speed) {
 
 void Ball::update() {
     startup_speed -= acceleration;
-    center_y += startup_speed * timeout;
-    if (center_y <= radius) {
-        // touch the ground
-        center_y = radius;
-        startup_speed = -startup_speed * 0.9;
-    }
     glPushMatrix();
     if (obj == 1) {
+        center_y += startup_speed * timeout;
+        if (center_y <= radius) {
+            // touch the ground
+            center_y = radius;
+            startup_speed = -startup_speed * 0.9;
+        }
         glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color);
         glTranslated(center_x, center_y, center_z);
         glutSolidSphere(radius, 30, 30);
     } else {
-        /* glTranslated(center_x, center_y, center_z); */
-        glScaled(0.03, 0.03, 0.03);
+        center_y += startup_speed * timeout;
+        if (center_y <= radius) {
+            // touch the ground
+            center_y = radius;
+            startup_speed = -startup_speed * 0.9;
+        }
         glTranslated(center_x, center_y, center_z);
+        glScaled(0.04, 0.04, 0.04);
         glCallList(obj);
     }
     glPopMatrix();
@@ -77,7 +82,7 @@ void Ball::read_obj(const char *filename) {
         fp=fopen(filename,"r");
         if (!fp) {
             printf("can't open file %s\n", filename);
-            exit(1);
+            return;
         }
 
         glPointSize(2.0);

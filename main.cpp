@@ -91,6 +91,6 @@ int main(int argc, char** argv) {
     balls[0] = Ball(0.7, GREEN, 6.0, 1.0, 250.0);
     balls[1] = Ball(1.0, MAGENTA, 3.0, 4.0, 200.0);
     balls[2] = Ball(0.4, WHITE, 1.0, 7.0, 300.0);
-    balls[3] = Ball(0.6, "./obj.obj", 4.0, 3.0, 220.0);
+    balls[3] = Ball(0.2, "./obj.obj", 4.0, 3.0, 500.0);
     glutMainLoop();
 }
